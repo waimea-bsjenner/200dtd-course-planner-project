@@ -9,9 +9,9 @@ by Ben Jenner
 
 My project will be a course planner for teachers, that allows them to manage topics, classes, and assignments within a web app.
 
-- A database featuring classes, topics, and assignments
-- Give lachlan a big 'ol smooch
-- Feature 3 here
+- The display of classes, topics, and assignments
+- The ability to edit which topics and assignments have been completed
+- The ability to change details about classes, topics and assignments
 - Feature 4 here
 - Feature 5 here
 
@@ -20,7 +20,7 @@ My project will be a course planner for teachers, that allows them to manage top
 
 ## Project Links
 
-- [GitHub repo for the project](https://...)
+- [GitHub repo for the project](https://github.com/waimea-bsjenner/200dtd-course-planner-project)
 - [Live web app](https://...)
 
 
