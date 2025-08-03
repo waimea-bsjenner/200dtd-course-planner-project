@@ -12,7 +12,7 @@ Develop a prototype that simulates the key functionality of the system, then tes
 
 ## Initial Database Design
 
-Replace this text with notes regarding the DB design.
+database will have 3 tables, one for classes, one for topics with the class as a separate key, and one for assignments with the topic and class as separate keys
 
 ![SCREENSHOT OF DB DESIGN](screenshots/example.png)
 
@@ -25,7 +25,7 @@ The first stage of prototyping was to explore how the UI might 'flow' between st
 
 This Figma demo shows the initial design for the UI 'flow':
 
-**FIGMA FLOW - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT**
+<iframe style="border: 20px solid rgba(255, 0, 0, 1);" width="800" height="450" src="https://embed.figma.com/proto/GGcGF0vmZpXDY5VRG9OAQv/Course-Planner?node-id=1-1858&p=f&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A1858&embed-host=share" allowfullscreen></iframe>
 
 ### Testing
 
