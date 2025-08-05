@@ -29,6 +29,19 @@ This Figma demo shows the initial design for the UI 'flow':
 
 ### Testing
 
+steveCopley.feedback()
+
+> Generalise to be steps rather than assignments
+
+> Due date not needed
+
+> Fields: title, notes, url1/2/3
+
+>Possibly to have a done field
+
+> Visually show done steps and possibly fully done topics (e.g. greyed out)
+
+
 Replace this text with notes about what you did to test the UI flow and the outcome of the testing.
 
 ### Changes / Improvements
