@@ -42,7 +42,7 @@ steveCopley.feedback()
 > Visually show done steps and possibly fully done topics (e.g. greyed out)
 
 
-Replace this text with notes about what you did to test the UI flow and the outcome of the testing.
+I changed all the assignments to steps, I removed the due date, and I added several url columns to the steps table, and added a done column to the topics and steps table
 
 ### Changes / Improvements
 
