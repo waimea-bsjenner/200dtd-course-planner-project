@@ -37,7 +37,7 @@ steveCopley.feedback()
 
 > Fields: title, notes, url1/2/3
 
->Possibly to have a done field
+> Possibly to have a done field
 
 > Visually show done steps and possibly fully done topics (e.g. greyed out)
 
@@ -46,9 +46,7 @@ I changed all the assignments to steps, I removed the due date, and I added seve
 
 ### Changes / Improvements
 
-Replace this text with notes any improvements you made as a result of the testing.
-
-*IMPROVED FIGMA FLOW - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT*
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/GGcGF0vmZpXDY5VRG9OAQv/Course-Planner?node-id=0-1&embed-host=share" allowfullscreen></iframe>
 
 
 ---

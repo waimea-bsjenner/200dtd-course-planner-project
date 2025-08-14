@@ -42,37 +42,58 @@ def about():
 
 
 #-----------------------------------------------------------
-# Things page route - Show all the things, and new thing form
+# class page route - Show details of a single class
 #-----------------------------------------------------------
-@app.get("/things/")
+@app.get("/class/<int:id>")
 def show_all_things():
     with connect_db() as client:
         # Get all the things from the DB
-        sql = "SELECT id, name FROM things ORDER BY name ASC"
+        sql = "SELECT id, name FROM classes ORDER BY name ASC"
         params = []
         result = client.execute(sql, params)
-        things = result.rows
+        clas = result.rows
 
         # And show them on the page
-        return render_template("pages/things.jinja", things=things)
+        return render_template("pages/class.jinja", clas=clas)
 
 
 #-----------------------------------------------------------
-# Thing page route - Show details of a single thing
+# Topic page - show details of a single topic
 #-----------------------------------------------------------
-@app.get("/thing/<int:id>")
+@app.get("/topic/<int:id>")
 def show_one_thing(id):
     with connect_db() as client:
         # Get the thing details from the DB
-        sql = "SELECT id, name, price FROM things WHERE id=?"
+        sql = "SELECT id, name, price FROM topics WHERE id=?"
         params = [id]
         result = client.execute(sql, params)
 
         # Did we get a result?
         if result.rows:
             # yes, so show it on the page
-            thing = result.rows[0]
-            return render_template("pages/thing.jinja", thing=thing)
+            topic = result.rows[0]
+            return render_template("pages/thing.jinja", topic=topic)
+
+        else:
+            # No, so show error
+            return not_found_error()
+
+#-----------------------------------------------------------
+# Step page - show details of a single step
+#-----------------------------------------------------------
+@app.get("/step/<int:id>")
+def show_one_thing(id):
+    with connect_db() as client:
+        # Get the thing details from the DB
+        sql = "SELECT id, name, price FROM steps WHERE id=?"
+        params = [id]
+        result = client.execute(sql, params)
+
+        # Did we get a result?
+        if result.rows:
+            # yes, so show it on the page
+            step = result.rows[0]
+            return render_template("pages/thing.jinja", step=step)
 
         else:
             # No, so show error
