@@ -9,30 +9,29 @@
 
 {% block title %}
 
-    Flask Demo - Single Thing
+    Course Planner
 
 {% endblock %}
 
 
 {% block content %}
 
-    <h1>A Single Thing...</h1>
+    <h1>{{ topic.name }}</h1>
 
+    <ul>
+        {% for steps in topic %}
+            <li>
+                <a href="/step/{{ step.id }}">
+                    {{ step.name }}
+                </a>                
+            </li>
 
-    <article>
+        {% else %}
 
-        <header>
-            <h3>{{ thing.name }}</h3>
-        </header>
+            <p>None!</p>
 
-        <p>Price: <strong>${{ thing.price }}</strong></p>
-
-        <footer>
-            <a href="/delete/{{ thing.id }}" onclick="return confirm('Really delete?');">Delete</a>
-        </footer>
-
-    </article>
-
+        {% endfor %}
+    </ul>
 
     <a role="button" href="/things">Back to Thing List</a>
 

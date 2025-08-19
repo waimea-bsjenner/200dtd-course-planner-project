@@ -30,7 +30,11 @@ init_datetime(app)  # Handle UTC dates in timestamps
 #-----------------------------------------------------------
 @app.get("/")
 def index():
-    return render_template("pages/home.jinja")
+    with connect_db() as client:
+        sql = "SELECT * from classes"
+        result = client.execute(sql)
+        classes = result.rows
+        return render_template("pages/home.jinja", classes=classes)
 
 
 #-----------------------------------------------------------
@@ -45,34 +49,34 @@ def about():
 # class page route - Show details of a single class
 #-----------------------------------------------------------
 @app.get("/class/<int:id>")
-def show_all_things():
+def show_class(id):
     with connect_db() as client:
         # Get all the things from the DB
-        sql = "SELECT id, name FROM classes ORDER BY name ASC"
-        params = []
+        sql = "SELECT * FROM topics where class_id=? ORDER BY name ASC"
+        params = [id]
         result = client.execute(sql, params)
-        clas = result.rows
+        topics = result.rows
 
         # And show them on the page
-        return render_template("pages/class.jinja", clas=clas)
+        return render_template("pages/class.jinja", topics=topics)
 
 
 #-----------------------------------------------------------
 # Topic page - show details of a single topic
 #-----------------------------------------------------------
 @app.get("/topic/<int:id>")
-def show_one_thing(id):
+def show_topic(id):
     with connect_db() as client:
         # Get the thing details from the DB
-        sql = "SELECT id, name, price FROM topics WHERE id=?"
+        sql = "SELECT * FROM steps WHERE topic_id=?"
         params = [id]
         result = client.execute(sql, params)
 
         # Did we get a result?
         if result.rows:
             # yes, so show it on the page
-            topic = result.rows[0]
-            return render_template("pages/thing.jinja", topic=topic)
+            steps = result.rows[0]
+            return render_template("pages/thing.jinja", steps=steps)
 
         else:
             # No, so show error
@@ -82,10 +86,10 @@ def show_one_thing(id):
 # Step page - show details of a single step
 #-----------------------------------------------------------
 @app.get("/step/<int:id>")
-def show_one_thing(id):
+def show_step(id):
     with connect_db() as client:
         # Get the thing details from the DB
-        sql = "SELECT id, name, price FROM steps WHERE id=?"
+        sql = "SELECT * FROM steps WHERE id=?"
         params = [id]
         result = client.execute(sql, params)
 
