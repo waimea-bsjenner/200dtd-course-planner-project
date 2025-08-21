@@ -32,7 +32,8 @@ init_datetime(app)  # Handle UTC dates in timestamps
 def index():
     with connect_db() as client:
         sql = "SELECT * from classes"
-        result = client.execute(sql)
+        params=[]
+        result = client.execute(sql, params)
         classes = result.rows
         return render_template("pages/home.jinja", classes=classes)
 
@@ -56,9 +57,13 @@ def show_class(id):
         params = [id]
         result = client.execute(sql, params)
         topics = result.rows
+        sql2 = "SELECT * FROM classes where id=?"
+        params2 = [id]
+        result2 = client.execute(sql2,params2)
+        clas =result2.rows
 
         # And show them on the page
-        return render_template("pages/class.jinja", topics=topics)
+        return render_template("pages/class.jinja", topics=topics, clas=clas)
 
 
 #-----------------------------------------------------------

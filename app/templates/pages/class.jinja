@@ -16,17 +16,17 @@
 
 {% block content %}
 
-    <h1>{{ class.name }}</h1>
+    <h1>{{ classes.name }}</h1>
 
 
     <article>
 
         <ul>
-            {% for topics in class %}
+            {% for topics in classes %}
 
                 <li>
-                    <a href="/topic/{{ topic.id }}">
-                        {{ topic.name }}
+                    <a href="/topic/{{ topics.id }}">
+                        {{ topics.name }}
                     </a>
                 </li>
 
