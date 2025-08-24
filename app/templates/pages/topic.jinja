@@ -19,7 +19,7 @@
     <h1>{{ topic.name }}</h1>
 
     <ul>
-        {% for steps in topic %}
+        {% for step in steps %}
             <li>
                 <a href="/step/{{ step.id }}">
                     {{ step.name }}
@@ -33,7 +33,7 @@
         {% endfor %}
     </ul>
 
-    <a role="button" href="/things">Back to Thing List</a>
+    <a role="button" href="/">Back to Classes List</a>
 
 {% endblock %}
 

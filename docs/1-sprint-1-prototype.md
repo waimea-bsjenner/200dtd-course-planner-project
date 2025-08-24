@@ -48,6 +48,8 @@ I changed all the assignments to steps, I removed the due date, and I added seve
 
 <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/GGcGF0vmZpXDY5VRG9OAQv/Course-Planner?node-id=0-1&embed-host=share" allowfullscreen></iframe>
 
+![Screenshot of DrawSQL plan post feedback](images/drawsqlFeedbackedPlan.png)
+
 
 ---
 

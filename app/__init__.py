@@ -53,14 +53,14 @@ def about():
 def show_class(id):
     with connect_db() as client:
         # Get all the things from the DB
-        sql = "SELECT * FROM topics where class_id=? ORDER BY name ASC"
+        sql = "SELECT * FROM topics where class_id=? ORDER BY done ASC"
         params = [id]
         result = client.execute(sql, params)
         topics = result.rows
+
         sql2 = "SELECT * FROM classes where id=?"
-        params2 = [id]
-        result2 = client.execute(sql2,params2)
-        clas =result2.rows
+        result2 = client.execute(sql2,params)
+        clas = result2.rows[0]
 
         # And show them on the page
         return render_template("pages/class.jinja", topics=topics, clas=clas)
@@ -76,16 +76,13 @@ def show_topic(id):
         sql = "SELECT * FROM steps WHERE topic_id=?"
         params = [id]
         result = client.execute(sql, params)
+        steps = result.rows
 
-        # Did we get a result?
-        if result.rows:
-            # yes, so show it on the page
-            steps = result.rows[0]
-            return render_template("pages/thing.jinja", steps=steps)
+        sql2 = "SELECT * from topics WHERE id=?"
+        result2 = client.execute(sql2,params)
+        topic = result2.rows[0]
 
-        else:
-            # No, so show error
-            return not_found_error()
+        return render_template("pages/topic.jinja", steps=steps, topic=topic)
 
 #-----------------------------------------------------------
 # Step page - show details of a single step
@@ -102,7 +99,7 @@ def show_step(id):
         if result.rows:
             # yes, so show it on the page
             step = result.rows[0]
-            return render_template("pages/thing.jinja", step=step)
+            return render_template("pages/step.jinja", step=step)
 
         else:
             # No, so show error

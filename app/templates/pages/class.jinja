@@ -1,7 +1,6 @@
 {#=====================================================
-  Things list page
-  - List of things passed in as 'things' array
-  - Form for adding a new thing
+  singular class list page
+  - List of topicss passed in as 'topics' array
 =====================================================#}
 
 {% extends 'pages/base.jinja' %}
@@ -16,17 +15,17 @@
 
 {% block content %}
 
-    <h1>{{ classes.name }}</h1>
+    <h1>{{ clas.name }}</h1>
 
 
     <article>
 
         <ul>
-            {% for topics in classes %}
+            {% for topic in topics %}
 
                 <li>
-                    <a href="/topic/{{ topics.id }}">
-                        {{ topics.name }}
+                    <a href="/topic/{{ topic.id }}">
+                        {{ topic.name }}
                     </a>
                 </li>
 
