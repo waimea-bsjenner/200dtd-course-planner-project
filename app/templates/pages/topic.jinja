@@ -16,22 +16,51 @@
 
 {% block content %}
 
-    <h1>{{ topic.name }}</h1>
+    <h1><a href="/class/{{ topic.class_id }}">Class</a> --> {{ topic.name }}</h1>
 
-    <ul>
-        {% for step in steps %}
-            <li>
-                <a href="/step/{{ step.id }}">
-                    {{ step.name }}
-                </a>                
-            </li>
+    <article>
 
-        {% else %}
+        <h3>Incomplete steps:</h3>
 
-            <p>None!</p>
+        <ul>
+            {% for step in steps %}
+                {% if step.done == 0 %}
+                    <li>
+                        <a href="/step/{{ step.id }}">
+                            {{ step.name }}
+                        </a>
+                    </li>
+                {% endif %}    
 
-        {% endfor %}
-    </ul>
+            {% else %}
+                <p>None!</p>
+            {% endfor %}           
+        </ul>
+
+        <strong>Completed steps:</strong>
+
+        <ul>
+            {% for step in steps %}
+                {% if step.done == 1 %}
+                    <li>
+                        <a href="/step/{{ step.id }}">
+                            {{ step.name }}
+                        </a>
+                    </li>
+                {% endif %}
+
+            {% else %}
+                <p>None!</p>
+            {% endfor %}
+        </ul>
+
+    </article>
+
+    <article>
+
+        <h3><a href="">Add a new Step</a></h3>
+
+    </article>
 
     <a role="button" href="/">Back to Classes List</a>
 

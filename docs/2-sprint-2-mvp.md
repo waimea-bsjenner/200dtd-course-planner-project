@@ -10,7 +10,7 @@ Develop a bare-bones, working web application that provides the key functionalit
 
 ## Implemented Database Schema
 
-Replace this text with notes regarding the DB schema.
+3 tables, classes, topics and steps, with many steps to a topic and many topics to a class.
 
 ![SCREENSHOT OF DB SCHEMA](screenshots/example.png)
 
@@ -21,7 +21,7 @@ Replace this text with notes regarding the DB schema.
 
 The key functionality of the web app was implemented:
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE SYSTEM HERE**
+![Working website :D](screenshots/keyFunctionalityTest.gif)
 
 
 ---

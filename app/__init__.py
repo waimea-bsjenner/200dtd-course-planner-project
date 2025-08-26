@@ -104,29 +104,36 @@ def show_step(id):
         else:
             # No, so show error
             return not_found_error()
-
+        
+#-----------------------------------------------------------
+# New Class page
+#-----------------------------------------------------------
+@app.get("/newClass")
+def newClassPage():
+    return render_template("pages/newClass.jinja")
 
 #-----------------------------------------------------------
-# Route for adding a thing, using data posted from a form
+# Route for adding a class, using data posted from a form
 #-----------------------------------------------------------
-@app.post("/add")
-def add_a_thing():
+@app.post("/addClass")
+def add_a_class():
     # Get the data from the form
-    name  = request.form.get("name")
-    price = request.form.get("price")
+    name = request.form.get("name")
+    size = request.form.get("size")
+    year = request.form.get("year")
 
     # Sanitise the text inputs
     name = html.escape(name)
 
     with connect_db() as client:
         # Add the thing to the DB
-        sql = "INSERT INTO things (name, price) VALUES (?, ?)"
-        params = [name, price]
+        sql = "INSERT INTO classes (name, size, year) VALUES (?, ?, ?)"
+        params = [name, size, year]
         client.execute(sql, params)
 
         # Go back to the home page
         flash(f"Thing '{name}' added", "success")
-        return redirect("/things")
+        return redirect("/")
 
 
 #-----------------------------------------------------------

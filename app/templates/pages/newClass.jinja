@@ -1,0 +1,53 @@
+{#=====================================================
+  Home page
+  - Hero style greeting banner
+  - List of things passed in as 'things' array
+  - Form for adding a new thing
+=====================================================#}
+
+{% extends 'pages/base.jinja' %}
+
+
+{% block title %}
+
+    Course Planner
+
+{% endblock %}
+
+
+{% block content %}
+
+    <h1>New Class</h1>
+
+    <form action = "/classAdd" method="POST">
+      <input
+        type="text"
+        name="name"
+        placeholder="Name of new class"
+        required
+      >
+
+      <input
+        type="number"
+        name="year"
+        placeholder="Year level of new class"
+        required
+      >
+
+      <input
+        type="number"
+        name="size"
+        placeholder="Size of new class"
+        required
+      >
+
+      <div>
+        <a role="button" href="/">Cancel</a>
+
+        <button> Add class</button>
+      </div>
+
+    </form>
+    
+{% endblock %}
+

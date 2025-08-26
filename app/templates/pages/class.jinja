@@ -22,17 +22,33 @@
 
         <ul>
             {% for topic in topics %}
-
-                <li>
-                    <a href="/topic/{{ topic.id }}">
-                        {{ topic.name }}
-                    </a>
-                </li>
+                {% if topic.done == 0 %}
+                    <li>
+                        <a href="/topic/{{ topic.id }}">
+                            {{ topic.name }}
+                        </a>
+                    </li>
+                {% endif %}    
 
             {% else %}
-
                 <p>None!</p>
+            {% endfor %}           
+        </ul>
 
+        <h3>Completed Topics:</h3>
+
+        <ul>
+            {% for topic in topics %}
+                {% if topic.done == 1 %}
+                    <li>
+                        <a href="/topic/{{ topic.id }}">
+                            {{ topic.name }}
+                        </a>
+                    </li>
+                {% endif %}
+
+            {% else %}
+                <p>None!</p>
             {% endfor %}
         </ul>
 
@@ -44,6 +60,8 @@
         <h3><a href="">Add a new Topic</a></h3>
 
     </article>
+
+    <a role="button" href="/">Back to Classes List</a>
 
 {% endblock %}
 
