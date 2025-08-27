@@ -48,9 +48,17 @@ I changed all the assignments to steps, I removed the due date, and I added seve
 
 <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/GGcGF0vmZpXDY5VRG9OAQv/Course-Planner?node-id=0-1&embed-host=share" allowfullscreen></iframe>
 
-![Screenshot of DrawSQL plan post feedback](images/drawsqlFeedbackedPlan.png)
+![Screenshot of DrawSQL plan post feedback](screenshots/drawsqlFeedbackedPlan.png)
 
+I then showed it back to Mr. Copley and he gave me some more feedback.
 
+> Anything you can do to minimize clicks would be good... For example, on the class overview page showing the current topic/step for each class would mean I could see at a glance what I was up to...
+
+to do this I added a current column to topics and steps in drawsql, and added it onto each individual class from the classes overview in the Figma prototype.
+
+![Screenshot of DrawSQL plan now with "current" column](screenshots/drawsqlCurrent.png)
+
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/GGcGF0vmZpXDY5VRG9OAQv/Course-Planner?node-id=0-1&embed-host=share" allowfullscreen></iframe>
 ---
 
 ## Initial UI Prototype
