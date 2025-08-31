@@ -108,10 +108,29 @@ def show_step(id):
 #-----------------------------------------------------------
 # New Class page
 #-----------------------------------------------------------
-@app.get("/newClass")
-def newClassPage():
-    return render_template("pages/newClass.jinja")
+@app.get("/newClassForm")
+def newClassForm():
+    return render_template("pages/newClassForm.jinja")
 
+#-----------------------------------------------------------
+# New Topic page
+#-----------------------------------------------------------
+@app.get("/newTopicForm")
+def newTopicForm():
+    return render_template("pages/newTopicForm.jinja")
+
+
+#-----------------------------------------------------------
+# Route for adding a topic, using date posted from a form
+#-----------------------------------------------------------
+@app.post("/addTopic")
+def add_a_topic():
+    # Get the data from the form
+    name = request.form.get("name")
+    class_id = request.form.get("class_id")
+    internal = request.form.get("internal")
+    external = request.form.get("external")
+    
 #-----------------------------------------------------------
 # Route for adding a class, using data posted from a form
 #-----------------------------------------------------------

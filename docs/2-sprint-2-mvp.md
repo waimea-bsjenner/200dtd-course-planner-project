@@ -26,11 +26,13 @@ The key functionality of the web app was implemented:
 
 ---
 
-## Testing FEATURE NAME HERE
+## Testing newClassForm page
 
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
+For the minimun viable product i simply wanted to get the page working. At first there were some struggles with routing it correctly, as it is rather finicky with all the forward slashes you need, but after some trial and error I figured out how to do it. Then after the page was usable I attempted to add a new class, to which it did not add a new class, but put the classAdd route in the link, doing nothing. I then took a closer look at my code and figured out the problem. It was addClass in init.py and classAdd in newClassForm. After making them match... it works!
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
+[classAdd](screenshots/classAdd.png)
+
+[addClass](screenshots/addClass.png)
 
 ### Changes / Improvements
 

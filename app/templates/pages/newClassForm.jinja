@@ -1,8 +1,6 @@
 {#=====================================================
-  Home page
-  - Hero style greeting banner
-  - List of things passed in as 'things' array
-  - Form for adding a new thing
+  New Class Form
+  -Lets user add a new class to the planner
 =====================================================#}
 
 {% extends 'pages/base.jinja' %}
@@ -19,7 +17,7 @@
 
     <h1>New Class</h1>
 
-    <form action = "/classAdd" method="POST">
+    <form action = "/addClass" method="POST">
       <input
         type="text"
         name="name"
@@ -44,7 +42,7 @@
       <div>
         <a role="button" href="/">Cancel</a>
 
-        <button> Add class</button>
+        <button>Add class</button>
       </div>
 
     </form>

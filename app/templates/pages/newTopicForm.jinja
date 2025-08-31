@@ -1,0 +1,75 @@
+{#=====================================================
+  New topic Form
+  -Lets user add a new topic to the planner
+=====================================================#}
+
+{% extends 'pages/base.jinja' %}
+
+
+{% block title %}
+
+    Course Planner
+
+{% endblock %}
+
+
+{% block content %}
+
+    <h1>New Topic</h1>
+
+    <form action = "/addTopic" method="POST">
+        <input
+            type="text"
+            name="name"
+            placeholder="Name of new Topic"
+            required
+        >
+
+        <input
+            type="number"
+            name="class_id"
+            placeholder="ID of class of new topic"
+            required
+        >
+
+        <input
+            type="boolean"
+            name="external"
+            placeholder="External?"
+            required
+        >
+
+        <input
+            type="boolean"
+            name="internal"
+            placeholder="Internal?"
+            required
+        >
+
+        <input
+            type="text"
+            name="description"
+            placeholder="Description of topic (optional)"
+        >
+
+        <input
+            type="number"
+            name="credits"
+            placeholder="Number of credits (optional)"
+        >
+
+        <input
+            type="number"
+            name="standard_number"
+            placeholder="Standard ID (optional)"
+        >
+
+      <div>
+        <a role="button" href="/">Cancel</a>
+
+        <button>Add topic</button>
+      </div>
+
+    </form>
+    
+{% endblock %}
