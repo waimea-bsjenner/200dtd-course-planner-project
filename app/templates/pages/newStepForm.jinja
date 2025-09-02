@@ -1,0 +1,68 @@
+{#=====================================================
+  New Step Form
+  -Lets user add a new step to the planner
+=====================================================#}
+
+{% extends 'pages/base.jinja' %}
+
+
+{% block title %}
+
+    Course Planner
+
+{% endblock %}
+
+
+{% block content %}
+
+    <h1>New Step</h1>
+
+    <form action = "/addStep" method="POST">
+      <input
+        type="text"
+        name="name"
+        placeholder="Name of new step"
+        required
+      >
+
+      <input
+        type="number"
+        name="topic_id"
+        placeholder="id of the step's topic"
+        required
+      >
+
+      <input
+        type="text"
+        name="notes"
+        placeholder="notes of new step"
+      >
+
+      <input
+        type="text"
+        name="url1"
+        placeholder="resource link 1"
+      >
+
+      <input
+        type="text"
+        name="url2"
+        placeholder="resource link 2"
+      >
+
+      <input
+        type="text"
+        name="url3"
+        placeholder="resource link 3"
+      >
+
+      <div>
+        <a role="button" href="/">Cancel</a>
+
+        <button>Add step</button>
+      </div>
+
+    </form>
+    
+{% endblock %}
+

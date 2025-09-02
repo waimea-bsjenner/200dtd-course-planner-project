@@ -24,6 +24,12 @@ init_logging(app)   # Log requests
 init_error(app)     # Handle errors and exceptions
 init_datetime(app)  # Handle UTC dates in timestamps
 
+#-----------------------------------------------------------
+# About page route
+#-----------------------------------------------------------
+@app.get("/about/")
+def about():
+    return render_template("pages/about.jinja")
 
 #-----------------------------------------------------------
 # Home page route
@@ -35,16 +41,14 @@ def index():
         params=[]
         result = client.execute(sql, params)
         classes = result.rows
-        return render_template("pages/home.jinja", classes=classes)
-
-
-#-----------------------------------------------------------
-# About page route
-#-----------------------------------------------------------
-@app.get("/about/")
-def about():
-    return render_template("pages/about.jinja")
-
+        sql2 = "SELECT * from topics"
+        result2 = client.execute(sql2, params)
+        topics = result2.rows
+        sql3 = "SELECT * from steps"
+        result3 = client.execute(sql3, params)
+        steps = result3.rows
+        return render_template("pages/home.jinja", classes=classes, topics=topics, steps=steps)
+    
 
 #-----------------------------------------------------------
 # class page route - Show details of a single class
@@ -119,6 +123,12 @@ def newClassForm():
 def newTopicForm():
     return render_template("pages/newTopicForm.jinja")
 
+#-----------------------------------------------------------
+# New Step page
+#-----------------------------------------------------------
+@app.get("/newStepForm")
+def newStepForm():
+    return render_template("pages/newStepForm.jinja")
 
 #-----------------------------------------------------------
 # Route for adding a topic, using date posted from a form
@@ -130,7 +140,20 @@ def add_a_topic():
     class_id = request.form.get("class_id")
     internal = request.form.get("internal")
     external = request.form.get("external")
-    
+    description = request.form.get("description")
+    credits = request.form.get("credits")
+    standard_number = request.form.get("standard_number")
+
+    name = html.escape(name)
+    description = html.escape(description)
+
+    with connect_db() as client:
+        sql = "INSERT INTO topics (name, class_id, external, internal, description, credits, standard_number) VALUES (?, ?, ?, ?, ?, ?, ?)"
+        params = [name, class_id, internal, external, description, credits, standard_number]
+        client.execute(sql, params)
+
+        flash(f"Topic '{name}' added", "success")
+        return redirect("/")
 #-----------------------------------------------------------
 # Route for adding a class, using data posted from a form
 #-----------------------------------------------------------
@@ -151,23 +174,76 @@ def add_a_class():
         client.execute(sql, params)
 
         # Go back to the home page
-        flash(f"Thing '{name}' added", "success")
+        flash(f"Class '{name}' added", "success")
         return redirect("/")
-
-
+    
 #-----------------------------------------------------------
-# Route for deleting a thing, Id given in the route
+# Route for adding a step, using date posted from a form
 #-----------------------------------------------------------
-@app.get("/delete/<int:id>")
-def delete_a_thing(id):
+@app.post("/addStep")
+def add_a_step():
+    name = request.form.get("step")
+    topic_id = request.form.get("topic_id")
+    notes = request.form.get("notes")
+    url1 = request.form.get("url1")
+    url2 = request.form.get("url2")
+    url3 = request.form.get("url3")
+    
+    name = html.escape(name)
+    notes = html.escape(notes)
+    url1 = html.escape(url1)
+    url2 = html.escape(url2)
+    url3 = html.escape(url3)
+    with connect_db() as client:
+        sql = "INSERT INTO steps (name, topic_id, notes, url1, url2, url3) VALUES (?, ?, ?, ?, ?, ?)"
+        params = [name, topic_id, notes, url1, url2, url3]
+        client.execute(sql, params)
+
+        flash(f"Step '{name}' added", "Success")
+        return redirect("/")
+#-----------------------------------------------------------
+# Route for deleting a class, Id given in the route
+#-----------------------------------------------------------
+@app.get("/deleteClass/<int:id>")
+def delete_a_class(id):
     with connect_db() as client:
         # Delete the thing from the DB
-        sql = "DELETE FROM things WHERE id=?"
+        sql = "DELETE FROM classes WHERE id=?"
         params = [id]
         client.execute(sql, params)
 
         # Go back to the home page
-        flash("Thing deleted", "success")
-        return redirect("/things")
+        flash("Class deleted", "success")
+        return redirect("/")
+
+#-----------------------------------------------------------
+# Route for deleting a topic, Id given in the route
+#-----------------------------------------------------------
+@app.get("/deleteTopic/<int:id>")
+def delete_a_topic(id):
+    with connect_db() as client:
+        # Delete the thing from the DB
+        sql = "DELETE FROM topic WHERE id=?"
+        params = [id]
+        client.execute(sql, params)
+
+        # Go back to the home page
+        flash("Topic deleted", "success")
+        return redirect("/")
+
+#-----------------------------------------------------------
+# Route for deleting a step, Id given in the route
+#-----------------------------------------------------------
+@app.get("/deleteStep/<int:id>")
+def delete_a_step(id):
+    with connect_db() as client:
+        # Delete the thing from the DB
+        sql = "DELETE FROM steps WHERE id=?"
+        params = [id]
+        client.execute(sql, params)
+
+        # Go back to the home page
+        flash("Step deleted", "success")
+        return redirect("/")
 
 

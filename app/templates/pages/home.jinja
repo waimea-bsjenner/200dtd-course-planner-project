@@ -21,9 +21,19 @@
 
     {% for class in classes %}
         <li>
-            <a href="/class/{{ class.id }}">
-                {{ class.name }}
-            </a>
+            <div>
+                <p>
+                    <a href="/class/{{ class.id }}">
+                        {{ class.name }}
+                    </a> - 
+                    {% for topic in topics %}
+                        {% if topic.class_id == class.id and topic.current %}
+                            <a href="/topic/{{ topic.id }}">Current topic: {{ topic.name }}</a> -
+                        {% endif %}
+                    {% endfor%}
+                    <a href="deleteClass/{{ class.id }}" onclick="return confirm('Really delete?');">Delete class?</a>
+                </p>            
+            </div>
         </li>
     {% endfor %}
 

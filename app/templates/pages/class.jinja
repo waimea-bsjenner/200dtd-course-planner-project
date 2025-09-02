@@ -27,6 +27,8 @@
                         <a href="/topic/{{ topic.id }}">
                             {{ topic.name }}
                         </a>
+
+                        <a href="deleteTopic" onclick="return confirm('Really delete?');">Delete?</a>
                     </li>
                 {% endif %}    
 
@@ -44,6 +46,8 @@
                         <a href="/topic/{{ topic.id }}">
                             {{ topic.name }}
                         </a>
+
+                        <a href="deleteTopic" onclick="return confirm('Really delete?');">Delete?</a>
                     </li>
                 {% endif %}
 
@@ -57,7 +61,7 @@
 
     <article>
 
-        <h3><a href="newTopicForm">Add a new Topic</a></h3>
+        <h3><a href="/newTopicForm">Add a new Topic</a></h3>
 
     </article>
 
