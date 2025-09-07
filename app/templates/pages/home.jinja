@@ -19,23 +19,39 @@
 
     <h1>Classes</h1>
 
-    {% for class in classes %}
-        <li>
-            <div>
-                <p>
-                    <a href="/class/{{ class.id }}">
-                        {{ class.name }}
-                    </a> - 
-                    {% for topic in topics %}
-                        {% if topic.class_id == class.id and topic.current %}
-                            <a href="/topic/{{ topic.id }}">Current topic: {{ topic.name }}</a> -
-                        {% endif %}
-                    {% endfor%}
+    <ul>
+        {% for class in classes %}
+            <li class="class">
+                <a href="/class/{{ class.id }}">
+                    <h2>{{ class.name }}</h2>
+                </a>
+
+                <div class="info">
+                    <h3>Current Topics:</h3>
+                    <ul>
+                        {% for topic in topics %}
+                            {% if topic.class_id == class.id and topic.current %}
+                                <li>
+                                    <a href="/topic/{{ topic.id }}">{{ topic.name }}</a>
+
+                                    <ul>
+                                        {% for step in steps %}
+                                            {% if step.topic_id == topic.id and step.current %}
+                                                <li>
+                                                    <a href="/step/{{ step.id }}">{{ step.name }}</a>
+                                                </li>
+                                            {% endif %}
+                                        {% endfor%}
+                                    </ul>
+                                </li>
+                            {% endif %}
+                        {% endfor%}
+                    </ul>
                     <a href="deleteClass/{{ class.id }}" onclick="return confirm('Really delete?');">Delete class?</a>
-                </p>            
-            </div>
-        </li>
-    {% endfor %}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
 
     <a role="button" href="/newClassForm">Add a new class</a>
     <a role="button" href="/about">About</a>
