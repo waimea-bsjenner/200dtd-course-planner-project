@@ -51,10 +51,11 @@ It was simple enough to get the page and form working, however there was no way 
 
 ### Changes / Improvements
 
-Replace this text with notes any improvements you made as a result of the testing.
+Instead of using an input tag, I used a select tag with the value being the id of the class, and the option being the name of the class. This makes it a lot more intuitive to use
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
+![New topic form with select dropdown menu for the class_id showing names of the class](screenshots/newTopicFormUsingClassName.png)
 
+I also used the same method for the new Step form page
 
 ---
 

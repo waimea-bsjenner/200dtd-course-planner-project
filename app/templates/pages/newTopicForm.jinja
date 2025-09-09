@@ -25,12 +25,11 @@
             required
         >
 
-        <input
-            type="number"
-            name="class_id"
-            placeholder="ID of class of new topic"
-            required
-        >
+        <select name="class_id" required type="number" placeholder="Class of new Topic">
+            {% for clas in classes %}
+                <option value="{{ clas.id }}">{{ clas.name }}</option>
+            {% endfor %}
+        </select>
 
         <input
             type="boolean"

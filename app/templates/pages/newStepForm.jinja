@@ -25,12 +25,11 @@
         required
       >
 
-      <input
-        type="number"
-        name="topic_id"
-        placeholder="id of the step's topic"
-        required
-      >
+      <select name=topic_id type="number" required placeholder="Topic of new Step">
+        {% for topic in topics %}
+          <option value="{{ topic.id }}">{{ topic.name }}</option>
+        {% endfor %}
+      </select>
 
       <input
         type="text"

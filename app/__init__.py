@@ -121,14 +121,24 @@ def newClassForm():
 #-----------------------------------------------------------
 @app.get("/newTopicForm")
 def newTopicForm():
-    return render_template("pages/newTopicForm.jinja")
+    with connect_db() as client:
+        sql = "SELECT * from classes"
+        params=[]
+        result = client.execute(sql, params)
+        classes = result.rows
+    return render_template("pages/newTopicForm.jinja", classes=classes)
 
 #-----------------------------------------------------------
 # New Step page
 #-----------------------------------------------------------
 @app.get("/newStepForm")
 def newStepForm():
-    return render_template("pages/newStepForm.jinja")
+    with connect_db() as client:
+        sql = "SELECT * from topics"
+        params=[]
+        result = client.execute(sql,params)
+        topics = result.rows
+    return render_template("pages/newStepForm.jinja", topics=topics)
 
 #-----------------------------------------------------------
 # Route for adding a topic, using date posted from a form
@@ -182,7 +192,7 @@ def add_a_class():
 #-----------------------------------------------------------
 @app.post("/addStep")
 def add_a_step():
-    name = request.form.get("step")
+    name = request.form.get("name")
     topic_id = request.form.get("topic_id")
     notes = request.form.get("notes")
     url1 = request.form.get("url1")
