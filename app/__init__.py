@@ -141,6 +141,47 @@ def newStepForm():
     return render_template("pages/newStepForm.jinja", topics=topics)
 
 #-----------------------------------------------------------
+# Update Class page
+#-----------------------------------------------------------
+@app.get("/updateClassForm/<int:id>")
+def updateClassForm(id):
+    with connect_db() as client:
+        sql = "SELECT * from classes WHERE id=?"
+        params = [id]
+        result=client.execute(sql, params)
+        clas=result.rows[0]
+    return render_template("pages/updateClassForm.jinja", clas=clas)
+
+
+#-----------------------------------------------------------
+# Update Topic page
+#-----------------------------------------------------------
+@app.get("/updateTopicForm/<int:id>")
+def updateTopicForm(id):
+    with connect_db() as client:
+        sql = "SELECT * from topics where id=?"
+        params = [id]
+        result = client.execute(sql, params)
+        topic = result.rows[0]
+        sql2 = "SELECT * from classes"
+        params2 = []
+        result=client.execute(sql, params)
+        classes = result.rows
+    return render_template("pages/updateTopicForm.jinja", topic=topic, classes=classes)
+
+#-----------------------------------------------------------
+# Update Step page
+#-----------------------------------------------------------
+@app.get("/updateStepForm/<int:id>")
+def updateStepForm(id):
+    with connect_db() as client:
+        sql = "SELECT * from steps where id=?"
+        params = [id]
+        result = client.execute(sql, params)
+        step = result.rows[0]
+    return render_template("pages/updateStepForm.jinja", step=step)
+
+#-----------------------------------------------------------
 # Route for adding a topic, using date posted from a form
 #-----------------------------------------------------------
 @app.post("/addTopic")
@@ -210,6 +251,72 @@ def add_a_step():
         client.execute(sql, params)
 
         flash(f"Step '{name}' added", "Success")
+        return redirect("/")
+    
+
+#-----------------------------------------------------------
+# Route for updating a class, Id given in the route
+#-----------------------------------------------------------
+@app.post("/updateClass/<int:id>")
+def update_a_class(id):
+    name = request.form.get("name")
+    size = request.form.get("size")
+    year = request.form.get("year")
+
+    name = html.escape(name)
+    with connect_db() as client:
+        sql = "UPDATE classes SET name=?, size=?, year=? WHERE id=?"
+        params = [name, size, year, id]
+        client.execute(sql, params)
+        flash("Class updated", "success")
+        return redirect("/")    
+
+#-----------------------------------------------------------
+# Route for updating a Topic, Id given in the route
+#-----------------------------------------------------------
+@app.post("/updateTopic/<int:id>")
+def update_a_topic(id):
+    name = request.form.get("name")
+    class_id = request.form.get("class_id")
+    external = request.form.get("external")
+    internal = request.form.get("internal")
+    description = request.form.get("description")
+    credits = request.form.get("credits")
+    standard_number = request.form.get("standard_number")
+
+    name = html.escape(name)
+    description = html.escape(description)
+    with connect_db() as client:
+        sql = "UPDATE classes SET name=?, class_id=?, external=?, internal=?, description=?, credits=?, standard_number=? WHERE id=?"
+        params = [name, class_id, external, internal, description, credits, standard_number, id]
+        client.execute(sql, params)
+        flash("Class updated", "success")
+        return redirect("/")    
+
+#-----------------------------------------------------------
+# Route for updating a Step, Id given in the route
+#-----------------------------------------------------------
+@app.post("/updateClass/<int:id>")
+def update_a_step(id):
+    name = request.form.get("name")
+    topic_id = request.form.get("topic_id")
+    notes = request.form.get("notes")
+    url1 = request.form.get("url1")
+    url2 = request.form.get("url2")
+    url3 = request.form.get("url3")
+
+
+    name = html.escape(name)
+    notes = html.escape(notes)
+    url1 = html.escape(url1)
+    url2 = html.escape(url2)
+    url3 = html.escape(url3)
+
+    with connect_db() as client:
+        sql = "UPDATE classes SET name=?, topic_id=?, notes=?, url1=?, url2=?, url3=? WHERE id=?"
+        params = [name, topic_id, notes, url1, url2, url3, id]
+        client.execute(sql, params)
+        flash("Class updated", "success")
         return redirect("/")
 #-----------------------------------------------------------
 # Route for deleting a class, Id given in the route

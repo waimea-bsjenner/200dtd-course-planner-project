@@ -1,0 +1,73 @@
+{#=====================================================
+  Update Topic Form
+  -Lets user update a Topic
+=====================================================#}
+
+{% extends 'pages/base.jinja' %}
+
+
+{% block title %}
+
+    Course Planner
+
+{% endblock %}
+
+
+{% block content %}
+
+    <h1>Updating {{ topic.name }}</h1>
+
+    <form action = "/updateTopic/{{ topic.id }}" method="POST">
+      <p>Name</p>
+      <input
+        type="text"
+        name="name"
+        placeholder="New name of Topic"
+        value="{{topic.name}}"
+        required
+      >
+      
+      <p>Class</p>
+      <select name="class_id" required type="number" placeholder="Class of new Topic">
+        {% for clas in classes %}
+          <option value="{{ clas.id }}">{{ clas.name }}</option>
+        {% endfor %}
+      </select>
+      
+      <p>External</p>
+      <input
+        type="number"
+        name="external"
+        placeholder="Is class an external?"
+        value="{{topic.external}}"
+        required
+      >
+
+      <p>Internal</p>
+      <input
+        type="number"
+        name="internal"
+        placeholder="Is class an internal?"
+        value="{{topic.internal}}"
+        required
+      >
+
+      <p>Description</p>
+      <input
+        type="text"
+        name="description"
+        placeholder="Description of Topic"
+        value="{{topic.description}}"
+        required
+      >
+
+      <div>
+        <a role="button" href="/class/{{ clas.id }}">Cancel</a>
+
+        <button>Update class</button>
+      </div>
+
+    </form>
+    
+{% endblock %}
+

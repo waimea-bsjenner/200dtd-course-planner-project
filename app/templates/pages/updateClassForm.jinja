@@ -1,0 +1,57 @@
+{#=====================================================
+  Update Class Form
+  -Lets user update a class
+=====================================================#}
+
+{% extends 'pages/base.jinja' %}
+
+
+{% block title %}
+
+    Course Planner
+
+{% endblock %}
+
+
+{% block content %}
+
+    <h1>Updating {{ clas.name }}</h1>
+
+    <form action = "/updateClass/{{ clas.id }}" method="POST">
+      <p>Name</p>
+      <input
+        type="text"
+        name="name"
+        placeholder="New name of class"
+        value="{{clas.name}}"
+        required
+      >
+      
+      <p>Size</p>
+      <input
+        type="number"
+        name="size"
+        placeholder="New size of class"
+        value="{{clas.size}}"
+        required
+      >
+      
+      <p>Year level</p>
+      <input
+        type="number"
+        name="year"
+        placeholder="New year level of class"
+        value="{{clas.year}}"
+        required
+      >
+
+      <div>
+        <a role="button" href="/class/{{ clas.id }}">Cancel</a>
+
+        <button>Update class</button>
+      </div>
+
+    </form>
+    
+{% endblock %}
+
