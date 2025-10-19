@@ -29,7 +29,7 @@
                             {{ topic.name }}
                         </a>
                     
-                        <a href="deleteTopic" onclick="return confirm('Really delete?');">Delete?</a>
+                        <a onclick="return confirm('Really delete?');" href="/deleteTopic/{{ topic.id }}">Delete?</a>
                     </li>
                 {% endif %}
                 {% else %}
@@ -43,7 +43,7 @@
                             {{ topic.name }}
                         </a>
 
-                        <a href="deleteTopic" onclick="return confirm('Really delete?');">Delete?</a>
+                        <a onclick="return confirm('Really delete?');" href="/deleteTopic/{{ topic.id }}">Delete?</a>
                     </li>
                 {% endif %}    
 
@@ -61,7 +61,7 @@
                             {{ topic.name }}
                         </a>
 
-                        <a href="deleteTopic" onclick="return confirm('Really delete?');">Delete?</a>
+                        <a onclick="return confirm('Really delete?');" href="/deleteTopic/{{ topic.id }}">Delete?</a>
                     </li>
                 {% endif %}
 
@@ -78,6 +78,8 @@
         <h3><a href="/newTopicForm">Add a new Topic</a></h3>
 
         <h3><a href="/updateClassForm/{{ clas.id }}">Update this class</a></h3>
+
+        <h3><a onclick="return confirm('Really delete?');" href="/deleteClass/{{ clas.id }}">Delete?</a></h3>
 
     </article>
 

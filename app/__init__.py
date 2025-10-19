@@ -318,6 +318,11 @@ def update_a_step(id):
         client.execute(sql, params)
         flash("Class updated", "success")
         return redirect("/")
+    
+    
+#-----------------------------------------------------------
+#
+#-----------------------------------------------------------
 #-----------------------------------------------------------
 # Route for deleting a class, Id given in the route
 #-----------------------------------------------------------
@@ -340,7 +345,7 @@ def delete_a_class(id):
 def delete_a_topic(id):
     with connect_db() as client:
         # Delete the thing from the DB
-        sql = "DELETE FROM topic WHERE id=?"
+        sql = "DELETE FROM topics WHERE id=?"
         params = [id]
         client.execute(sql, params)
 
