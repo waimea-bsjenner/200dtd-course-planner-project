@@ -185,12 +185,24 @@ def updateStepForm(id):
 #-----------------------------------------------------------
 # Current Topic route
 #-----------------------------------------------------------
-@app.post("/currentTopic")
+@app.get("/currentTopic/<int:id>")
 def currentTopic(id):
     with connect_db() as client:
         sql = "UPDATE topics SET current=1 WHERE id=?"
         params = [id]
         client.execute(sql, params)
+        return redirect("/")
+    
+#-----------------------------------------------------------
+# Uncurrent Topic route
+#-----------------------------------------------------------
+@app.get("/uncurrentTopic/<int:id>")
+def uncurrentTopic(id):
+    with connect_db() as client:
+        sql = "UPDATE topics SET current=0 WHERE id=?"
+        params = [id]
+        client.execute(sql, params)
+        return redirect("/")
 #-----------------------------------------------------------
 # Route for adding a topic, using date posted from a form
 #-----------------------------------------------------------

@@ -85,6 +85,9 @@
     </article>
 
     <article>
+        {% if topic.current == 0 %} <h3><a href="/currentTopic/{{ topic.id }}">Make Topic Current</a></h3>
+        {% else %} <h3><a href="/uncurrentTopic/{{ topic.id }}">Remove topic as current</a></h3>
+        {% endif %}
 
         <h3><a href="/newStepForm">Add a new Step</a></h3>
 
