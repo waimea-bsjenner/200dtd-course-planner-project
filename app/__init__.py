@@ -181,6 +181,16 @@ def updateStepForm(id):
         step = result.rows[0]
     return render_template("pages/updateStepForm.jinja", step=step)
 
+
+#-----------------------------------------------------------
+# Current Topic route
+#-----------------------------------------------------------
+@app.post("/currentTopic")
+def currentTopic(id):
+    with connect_db() as client:
+        sql = "UPDATE topics SET current=1 WHERE id=?"
+        params = [id]
+        client.execute(sql, params)
 #-----------------------------------------------------------
 # Route for adding a topic, using date posted from a form
 #-----------------------------------------------------------

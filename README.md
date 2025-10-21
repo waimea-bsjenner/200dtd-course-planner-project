@@ -1,4 +1,4 @@
-# PROJECT NAME HERE
+# Course Planner
 
 by Ben Jenner
 
@@ -12,8 +12,6 @@ My project will be a course planner for teachers, that allows them to manage top
 - The display of classes, topics, and assignments
 - The ability to edit which topics and assignments have been completed
 - The ability to change details about classes, topics and assignments
-- Feature 4 here
-- Feature 5 here
 
 
 ---
@@ -21,6 +19,7 @@ My project will be a course planner for teachers, that allows them to manage top
 ## Project Links
 
 - [GitHub repo for the project](https://github.com/waimea-bsjenner/200dtd-course-planner-project)
+- [Project documentation](https://waimea-bsjenner.github.io/200dtd-course-planner-project/)
 - [Live web app](https://...)
 
 

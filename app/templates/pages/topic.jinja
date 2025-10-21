@@ -19,6 +19,34 @@
     <h1><a href="/class/{{ topic.class_id }}">Class</a> --> {{ topic.name }}</h1>
 
     <article>
+        <h3>Information</h3>
+        <p>External: {% if topic.external == 1 %} yes {% else %} no {% endif %}</p>
+        <p>Internal: {% if topic.internal == 1 %} yes {% else %} no {% endif %}</p>
+        <p>Credits: {% if topic.credits > 1 %} {{ topic.credits }} {% else %} none {% endif %}</p>
+        <p>Standard number: {% if topic.standard_number != 0 %} {{ topic.standard_number }} {% else %} NA/doesn't exist {%endif%}</p>
+        <p>Current: {% if topic.current == 1 %} yes {% else %} no {% endif %}</p>
+        <p>Done: {% if topic.done == 1 %} yes {% else %} no {% endif %}</p>
+        <p>Description: {{ topic.description }}</p>
+    </article>
+
+    <article>
+
+        <h3>Current steps:</h3>
+
+        <ul>
+            {% for step in steps %}
+                {% if step.current == 1 %}
+                    <li>
+                        <a href="/step/{{ step.id }}">
+                            {{ step.name }}
+                        </a>
+                    </li>
+                {% endif %}    
+
+            {% else %}
+                <p>None!</p>
+            {% endfor %}           
+        </ul>
 
         <h3>Incomplete steps:</h3>
 

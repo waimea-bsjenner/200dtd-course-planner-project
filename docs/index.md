@@ -1,19 +1,16 @@
-# PROJECT NAME HERE
+# Course Planner
 
-by YOUR NAME HERE
-
+by Ben Jenner
 
 ---
 
 ## Project Description
 
-Replace this text with your project description and list the key features below
+My project will be a course planner for teachers, that allows them to manage topics, classes, and assignments within a web app.
 
-- Feature 1 here
-- Feature 2 here
-- Feature 3 here
-- Feature 4 here
-- Feature 5 here
+- The display of classes, topics, and assignments
+- The ability to edit which topics and assignments have been completed
+- The ability to change details about classes, topics and assignments
 
 
 ---
