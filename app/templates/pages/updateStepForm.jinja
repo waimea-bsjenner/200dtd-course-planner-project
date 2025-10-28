@@ -1,6 +1,6 @@
 {#=====================================================
-  Update Class Form
-  -Lets user update a class
+  Update Step Form
+  -Lets user update a step
 =====================================================#}
 
 {% extends 'pages/base.jinja' %}
@@ -15,38 +15,59 @@
 
 {% block content %}
 
-    <h1>Updating {{ clas.name }}</h1>
+    <h1>Updating {{ step.name }}</h1>
 
-    <form action = "/updateClass/{{ clas.id }}" method="POST">
+    <form action = "/updateStep/{{ step.id }}" method="POST">
       <p>Name</p>
       <input
         type="text"
         name="name"
-        placeholder="New name of class"
-        value="{{clas.name}}"
-        required
-      >
-      
-      <p>Size</p>
-      <input
-        type="number"
-        name="size"
-        placeholder="New size of class"
-        value="{{clas.size}}"
-        required
-      >
-      
-      <p>Year level</p>
-      <input
-        type="number"
-        name="year"
-        placeholder="New year level of class"
-        value="{{clas.year}}"
+        placeholder="New name of step"
+        value="{{step.name}}"
         required
       >
 
+      <p>Topic</p>
+      <select name="topic_id" required type="number" placeholder="Topic of new Step">
+        {% for topic in topics %}
+          <option value="{{ topic.id }}">{{ topic.name }}</option>
+        {% endfor %}
+      </select>
+      
+      <p>Notes</p>
+      <input
+        type="text"
+        name="notes"
+        placeholder="Notes of step"
+        value="{{step.notes}}"
+      >
+      
+      <p>Resource link 1</p>
+      <input
+        type="text"
+        name="url1"
+        placeholder="Resource link 1"
+        value="{{step.url1}}"
+      >
+
+      <p>Resource link 2</p>
+      <input
+        type="text"
+        name="url2"
+        placeholder="Resource link 2"
+        value="{{step.url2}}"
+      >
+
+      <p>Resource link 3</p>
+      <input
+        type="text"
+        name="url3"
+        placeholder="Resource link 3"
+        value="{{step.url3}}"
+      >
+
       <div>
-        <a role="button" href="/class/{{ clas.id }}">Cancel</a>
+        <a role="button" href="/step/{{ step.id }}">Cancel</a>
 
         <button>Update class</button>
       </div>

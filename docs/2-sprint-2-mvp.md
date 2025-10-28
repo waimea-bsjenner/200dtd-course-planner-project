@@ -59,17 +59,17 @@ I also used the same method for the new Step form page
 
 ---
 
-## Testing FEATURE NAME HERE
+## Testing current topic/step feature
 
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
+Having a Topic/Step with current = 1 means that it will appear under the "current topic/step" section, and appear underneath its class on the homepage. I will be testing to see if the python can change a topic/step's current between 1 and 0.
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
+![Usage of the Current feature for a Topic](screenshots/currentTopicTest.gif)
+
+![Usage of the Current feature for a Step](screenshots/currentStepTest.gif)
 
 ### Changes / Improvements
 
-Replace this text with notes any improvements you made as a result of the testing.
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
+Works as intended for now. Will consult end user for any improvements.
 
 
 ---

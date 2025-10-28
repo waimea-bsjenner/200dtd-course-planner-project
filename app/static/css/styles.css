@@ -39,3 +39,9 @@
     margin: 2rem;
     padding: 1rem 2rem;
 }
+
+/* LISTS OF TOPICS, STEPS, ETC ------------------------- */
+
+.list {
+    display: flex;
+}

@@ -45,6 +45,8 @@
                                         </ul>
                                     </li>
                                 {% endif %}
+                            {% else %}
+                                <strong>None!</strong>
                             {% endfor%}
                         </ul>
                         <a href="deleteClass/{{ class.id }}" onclick="return confirm('Really delete?');">Delete class?</a>

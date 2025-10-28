@@ -1,6 +1,7 @@
 {#=====================================================
   Step page
   - Shows details of a single thing
+  - Has option to change current and done status
   - Has a delete link to remove it
 =====================================================#}
 
@@ -26,7 +27,17 @@
       <a href="{{ step.url3 }}">{{ step.url3 }}</a>
     </article>
 
+    <article>
+    <h3><a href="/updateStepForm/{{ step.id }}">Update Step</a></h3>
+      {% if step.current == 0 %} <h3><a href="/currentStep/{{ step.id }}">Make step current</a></h3>
+      {% else %} <h3><a href="/unCurrentStep/{{ step.id }}">Remove step as current</a></h3>
+      {% endif %}
+      {% if step.done == 0 %} <h3><a href="/completeStep/{{ step.id }}">Complete step</a></h3>
+      {% else %} <h3><a href="/unCompleteStep/{{ step.id }}">Remove step as complete</a></h3>
+      {% endif %}
+      <h3><a onclick="return confirm('Really delete?');" href="/deleteStep/{{ step.id }}">Delete step</a></h3>
 
+    </article>
     <a role="button" href="/">Back to Classes</a>
 
 {% endblock %}

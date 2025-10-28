@@ -167,8 +167,8 @@ def updateTopicForm(id):
         topic = result.rows[0]
         sql2 = "SELECT * from classes"
         params2 = []
-        result=client.execute(sql, params)
-        classes = result.rows
+        result2 = client.execute(sql2, params2)
+        classes = result2.rows
     return render_template("pages/updateTopicForm.jinja", topic=topic, classes=classes)
 
 #-----------------------------------------------------------
@@ -181,7 +181,11 @@ def updateStepForm(id):
         params = [id]
         result = client.execute(sql, params)
         step = result.rows[0]
-    return render_template("pages/updateStepForm.jinja", step=step)
+        sql2 = "SELECT * from topics"
+        params2 = []
+        result2 =client.execute(sql2, params2)
+        topics = result2.rows
+    return render_template("pages/updateStepForm.jinja", step=step, topics=topics)
 
 
 #-----------------------------------------------------------
@@ -388,7 +392,7 @@ def update_a_topic(id):
 #-----------------------------------------------------------
 # Route for updating a Step, Id given in the route
 #-----------------------------------------------------------
-@app.post("/updateClass/<int:id>")
+@app.post("/updateStep/<int:id>")
 def update_a_step(id):
     name = request.form.get("name")
     topic_id = request.form.get("topic_id")
@@ -405,8 +409,8 @@ def update_a_step(id):
     url3 = html.escape(url3)
 
     with connect_db() as client:
-        sql = "UPDATE classes SET name=?, topic_id=?, notes=?, url1=?, url2=?, url3=? WHERE id=?"
-        params = [name, topic_id, notes, url1, url2, url3, id]
+        sql = "UPDATE classes SET topic_id=?, name=?, notes=?, url1=?, url2=?, url3=? WHERE id=?"
+        params = [topic_id, name, notes, url1, url2, url3, id]
         client.execute(sql, params)
         flash("Class updated", "success")
         return redirect("/")
