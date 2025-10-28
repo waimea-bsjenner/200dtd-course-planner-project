@@ -30,6 +30,7 @@ init_datetime(app)  # Handle UTC dates in timestamps
 @app.get("/about/")
 def about():
     return render_template("pages/about.jinja")
+# contains all the tools used in the development of this project
 
 #-----------------------------------------------------------
 # Home page route
@@ -37,8 +38,9 @@ def about():
 @app.get("/")
 def index():
     with connect_db() as client:
-        sql = "SELECT * from classes"
+        # gathers all the data from all tables and sends it through
         params=[]
+        sql = "SELECT * from classes"
         result = client.execute(sql, params)
         classes = result.rows
         sql2 = "SELECT * from topics"
@@ -203,6 +205,74 @@ def uncurrentTopic(id):
         params = [id]
         client.execute(sql, params)
         return redirect("/")
+
+#-----------------------------------------------------------
+# Current Step route
+#-----------------------------------------------------------
+@app.get("/currentStep/<int:id>")
+def currentStep(id):
+    with connect_db() as client:
+        sql = "UPDATE steps SET current=1 WHERE id=?"
+        params = [id]
+        client.execute(sql, params)
+        return redirect("/")
+    
+#-----------------------------------------------------------
+# Uncurrent Step route
+#-----------------------------------------------------------
+@app.get("/unCurrentStep/<int:id>")
+def uncurrentStep(id):
+    with connect_db() as client:
+        sql = "UPDATE steps SET current=0 WHERE id=?"
+        params = [id]
+        client.execute(sql, params)
+        return redirect("/")
+    
+#-----------------------------------------------------------
+# complete Step route
+#-----------------------------------------------------------
+@app.get("/completeStep/<int:id>")
+def completeStep(id):
+    with connect_db() as client:
+        sql = "UPDATE steps SET done=1 WHERE id=?"
+        params = [id]
+        client.execute(sql, params)
+        return redirect("/")
+    
+#-----------------------------------------------------------
+# Uncomplete Step route
+#-----------------------------------------------------------
+@app.get("/unCompleteStep/<int:id>")
+def unCompleteStep(id):
+    with connect_db() as client:
+        sql = "UPDATE steps SET done=0 WHERE id=?"
+        params = [id]
+        client.execute(sql, params)
+        return redirect("/")
+    
+#-----------------------------------------------------------
+# Complete Topic route
+#-----------------------------------------------------------
+@app.get("/completeTopic/<int:id>")
+def completeTopic(id):
+    with connect_db() as client:
+        sql = "UPDATE topics SET done=1 WHERE id=?"
+        params = [id]
+        client.execute(sql, params)
+        return redirect("/")
+    
+#-----------------------------------------------------------
+# Uncomplete Topic route
+#-----------------------------------------------------------
+@app.get("/unCompleteTopic/<int:id>")
+def uncompleteTopic(id):
+    with connect_db() as client:
+        sql = "UPDATE topics SET done=0 WHERE id=?"
+        params = [id]
+        client.execute(sql, params)
+        return redirect("/")
+    
+
 #-----------------------------------------------------------
 # Route for adding a topic, using date posted from a form
 #-----------------------------------------------------------

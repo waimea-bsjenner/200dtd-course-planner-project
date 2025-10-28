@@ -20,7 +20,7 @@ My project will be a course planner for teachers, that allows them to manage top
 
 - [GitHub repo for the project](https://github.com/waimea-bsjenner/200dtd-course-planner-project)
 - [Project documentation](https://waimea-bsjenner.github.io/200dtd-course-planner-project/)
-- [Live web app](https://...)
+- [Live web app](https://two00dtd-course-planner-project.onrender.com)
 
 
 ---

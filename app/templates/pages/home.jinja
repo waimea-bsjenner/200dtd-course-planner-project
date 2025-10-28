@@ -20,35 +20,37 @@
 
     <ul>
         {% for class in classes %}
-            <li class="class">
-                <a href="/class/{{ class.id }}">
-                    <h2>{{ class.name }}</h2>
-                </a>
+            <article class="homeClass">
+                <li>
+                    <a href="/class/{{ class.id }}">
+                        <h2>{{ class.name }}</h2>
+                    </a>
 
-                <div class="info">
-                    <h3>Current Topics:</h3>
-                    <ul>
-                        {% for topic in topics %}
-                            {% if topic.class_id == class.id and topic.current %}
-                                <li>
-                                    <a href="/topic/{{ topic.id }}">{{ topic.name }}</a>
+                    <div class="info">
+                        <h3>Current Topics:</h3>
+                        <ul>
+                            {% for topic in topics %}
+                                {% if topic.class_id == class.id and topic.current %}
+                                    <li>
+                                        <a href="/topic/{{ topic.id }}">{{ topic.name }}</a>
 
-                                    <ul>
-                                        {% for step in steps %}
-                                            {% if step.topic_id == topic.id and step.current %}
-                                                <li>
-                                                    <a href="/step/{{ step.id }}">{{ step.name }}</a>
-                                                </li>
-                                            {% endif %}
-                                        {% endfor%}
-                                    </ul>
-                                </li>
-                            {% endif %}
-                        {% endfor%}
-                    </ul>
-                    <a href="deleteClass/{{ class.id }}" onclick="return confirm('Really delete?');">Delete class?</a>
-                </div>
-            </li>
+                                        <ul>
+                                            {% for step in steps %}
+                                                {% if step.topic_id == topic.id and step.current %}
+                                                    <li>
+                                                        <a href="/step/{{ step.id }}">{{ step.name }}</a>
+                                                    </li>
+                                                {% endif %}
+                                            {% endfor%}
+                                        </ul>
+                                    </li>
+                                {% endif %}
+                            {% endfor%}
+                        </ul>
+                        <a href="deleteClass/{{ class.id }}" onclick="return confirm('Really delete?');">Delete class?</a>
+                    </div>
+                </li>
+            </article>
         {% endfor %}
     </ul>
 

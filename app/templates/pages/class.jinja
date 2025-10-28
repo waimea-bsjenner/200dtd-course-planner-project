@@ -29,13 +29,14 @@
             <h3>Current Topics:</h3>
             {% for topic in topics %}   
                 {% if topic.current == 1 %}
-                    <li>
+                    <li class="list">
                         <a href="/topic/{{ topic.id }}">
                             {{ topic.name }}
                         </a>
                     
                         <a onclick="return confirm('Really delete?');" href="/deleteTopic/{{ topic.id }}">Delete?</a>
                         <a href="/uncurrentTopic/{{ topic.id }}">Remove topic as current</a>
+                        <a href="/completeTopic/{{ topic.id }}">Complete Topic</a>
                     </li>
                 {% endif %}
                 {% else %}
@@ -45,13 +46,14 @@
             <h3>Incomplete Topics:</h3>
             {% for topic in topics %}
                 {% if topic.done == 0 and topic.current == 0 %}
-                    <li>
+                    <li class="list">
                         <a href="/topic/{{ topic.id }}">
                             {{ topic.name }}
                         </a>
 
                         <a onclick="return confirm('Really delete?');" href="/deleteTopic/{{ topic.id }}">Delete?</a>
                         <a href="/currentTopic/{{ topic.id }}">make topic current</a>
+                        <a href="/completeTopic/{{ topic.id }}">Complete Topic</a>
                     </li>
                 {% endif %}    
 
@@ -64,11 +66,11 @@
             <h3>Completed Topics:</h3>
             {% for topic in topics %}
                 {% if topic.done == 1 %}
-                    <li>
+                    <li class="list">
                         <a href="/topic/{{ topic.id }}">
                             {{ topic.name }}
                         </a>
-
+                        <a href="/unCompleteTopic/{{ topic.id }}">Uncomplete topic</a>
                         <a onclick="return confirm('Really delete?');" href="/deleteTopic/{{ topic.id }}">Delete?</a>
                     </li>
                 {% endif %}
@@ -82,7 +84,7 @@
 
 
     <article>
-
+    
         <h3><a href="/newTopicForm">Add a new Topic</a></h3>
 
         <h3><a href="/updateClassForm/{{ clas.id }}">Update this class</a></h3>

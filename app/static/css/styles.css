@@ -33,3 +33,9 @@
 #messages .message.success { color: var(--pico-color-green-500); }
 #messages .message.error   { color: var(--pico-color-red-500); }
 
+/* HOME ------------------------------------------------ */
+
+.homeClass {
+    margin: 2rem;
+    padding: 1rem 2rem;
+}

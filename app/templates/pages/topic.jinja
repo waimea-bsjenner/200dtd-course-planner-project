@@ -36,10 +36,12 @@
         <ul>
             {% for step in steps %}
                 {% if step.current == 1 %}
-                    <li>
+                    <li class="list">
                         <a href="/step/{{ step.id }}">
                             {{ step.name }}
                         </a>
+                        <a href="/unCurrentStep/{{ step.id }}">Remove step as current?</a>
+                        <a href="/completeStep/{{ step.id }}">Complete step</a>
                     </li>
                 {% endif %}    
 
@@ -52,11 +54,13 @@
 
         <ul>
             {% for step in steps %}
-                {% if step.done == 0 %}
-                    <li>
+                {% if step.done == 0 and step.current == 0 %}
+                    <li class="list">
                         <a href="/step/{{ step.id }}">
                             {{ step.name }}
                         </a>
+                        <a href="/currentStep/{{ step.id }}">Make step current?</a>
+                        <a href="/completeStep/{{ step.id }}">Complete Step</a>
                     </li>
                 {% endif %}    
 
@@ -70,10 +74,12 @@
         <ul>
             {% for step in steps %}
                 {% if step.done == 1 %}
-                    <li>
+                    <li class="list">
                         <a href="/step/{{ step.id }}">
                             {{ step.name }}
                         </a>
+                        <a onclick="return confirm('Really delete?');" href="/deleteStep/{{ step.id }}">Delete Step</a>
+                        <a href="/unCompleteStep/{{ step.id }}">Uncomplete Step</a>
                     </li>
                 {% endif %}
 
@@ -87,6 +93,9 @@
     <article>
         {% if topic.current == 0 %} <h3><a href="/currentTopic/{{ topic.id }}">Make Topic Current</a></h3>
         {% else %} <h3><a href="/uncurrentTopic/{{ topic.id }}">Remove topic as current</a></h3>
+        {% endif %}
+        {% if topic.done == 0 %} <h3><a href="/completeTopic/{{ topic.id }}">Complete Topic</a></h3>
+        {% else %} <h3><a href="/unCompleteTopic/{{ topic.id }}">Uncomplete Topic</a></h3>
         {% endif %}
 
         <h3><a href="/newStepForm">Add a new Step</a></h3>
