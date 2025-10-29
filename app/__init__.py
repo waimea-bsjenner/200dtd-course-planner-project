@@ -1,8 +1,8 @@
 #===========================================================
-# YOUR PROJECT TITLE HERE
-# YOUR NAME HERE
+# Course Planner
+# By Ben Jenner
 #-----------------------------------------------------------
-# BRIEF DESCRIPTION OF YOUR PROJECT HERE
+# This course planner can be used to manage classes, and relevant topics and steps about those classes. It can also show topics/steps that are completed and current.
 #===========================================================
 
 from flask import Flask, render_template, request, flash, redirect
@@ -78,12 +78,12 @@ def show_class(id):
 @app.get("/topic/<int:id>")
 def show_topic(id):
     with connect_db() as client:
-        # Get the thing details from the DB
+        # Get the steps of the topic from the DB
         sql = "SELECT * FROM steps WHERE topic_id=?"
         params = [id]
         result = client.execute(sql, params)
         steps = result.rows
-
+        # Get all the topic details from the DB
         sql2 = "SELECT * from topics WHERE id=?"
         result2 = client.execute(sql2,params)
         topic = result2.rows[0]
@@ -117,6 +117,7 @@ def show_step(id):
 @app.get("/newClassForm")
 def newClassForm():
     return render_template("pages/newClassForm.jinja")
+    # Loads the page with the form for the new class
 
 #-----------------------------------------------------------
 # New Topic page
@@ -124,6 +125,7 @@ def newClassForm():
 @app.get("/newTopicForm")
 def newTopicForm():
     with connect_db() as client:
+        # Ge
         sql = "SELECT * from classes"
         params=[]
         result = client.execute(sql, params)
@@ -183,7 +185,7 @@ def updateStepForm(id):
         step = result.rows[0]
         sql2 = "SELECT * from topics"
         params2 = []
-        result2 =client.execute(sql2, params2)
+        result2 = client.execute(sql2, params2)
         topics = result2.rows
     return render_template("pages/updateStepForm.jinja", step=step, topics=topics)
 
