@@ -125,7 +125,7 @@ def newClassForm():
 @app.get("/newTopicForm")
 def newTopicForm():
     with connect_db() as client:
-        # Ge
+        # Get all classes from DB
         sql = "SELECT * from classes"
         params=[]
         result = client.execute(sql, params)
@@ -138,6 +138,7 @@ def newTopicForm():
 @app.get("/newStepForm")
 def newStepForm():
     with connect_db() as client:
+        # get all topics from DB
         sql = "SELECT * from topics"
         params=[]
         result = client.execute(sql,params)
@@ -150,6 +151,7 @@ def newStepForm():
 @app.get("/updateClassForm/<int:id>")
 def updateClassForm(id):
     with connect_db() as client:
+        # get Class being updated from DB
         sql = "SELECT * from classes WHERE id=?"
         params = [id]
         result=client.execute(sql, params)
@@ -163,6 +165,7 @@ def updateClassForm(id):
 @app.get("/updateTopicForm/<int:id>")
 def updateTopicForm(id):
     with connect_db() as client:
+        # Get Topic being updated and all classes being updated from DB
         sql = "SELECT * from topics where id=?"
         params = [id]
         result = client.execute(sql, params)
@@ -179,6 +182,7 @@ def updateTopicForm(id):
 @app.get("/updateStepForm/<int:id>")
 def updateStepForm(id):
     with connect_db() as client:
+        # Get Step being updated and all topics from DB
         sql = "SELECT * from steps where id=?"
         params = [id]
         result = client.execute(sql, params)
@@ -196,6 +200,7 @@ def updateStepForm(id):
 @app.get("/currentTopic/<int:id>")
 def currentTopic(id):
     with connect_db() as client:
+        # Updates the topic selected to be current
         sql = "UPDATE topics SET current=1 WHERE id=?"
         params = [id]
         client.execute(sql, params)
@@ -207,6 +212,7 @@ def currentTopic(id):
 @app.get("/uncurrentTopic/<int:id>")
 def uncurrentTopic(id):
     with connect_db() as client:
+        # updates the topic selected to be NOT current
         sql = "UPDATE topics SET current=0 WHERE id=?"
         params = [id]
         client.execute(sql, params)
@@ -218,6 +224,7 @@ def uncurrentTopic(id):
 @app.get("/currentStep/<int:id>")
 def currentStep(id):
     with connect_db() as client:
+        # uPDATES THE STEP SELECTED TO BE CURRENT OOP CAPS LOCK
         sql = "UPDATE steps SET current=1 WHERE id=?"
         params = [id]
         client.execute(sql, params)
@@ -229,6 +236,7 @@ def currentStep(id):
 @app.get("/unCurrentStep/<int:id>")
 def uncurrentStep(id):
     with connect_db() as client:
+        # updates the sTEp secelted to be not current
         sql = "UPDATE steps SET current=0 WHERE id=?"
         params = [id]
         client.execute(sql, params)
@@ -240,6 +248,7 @@ def uncurrentStep(id):
 @app.get("/completeStep/<int:id>")
 def completeStep(id):
     with connect_db() as client:
+        # updates the step to be completed
         sql = "UPDATE steps SET done=1 WHERE id=?"
         params = [id]
         client.execute(sql, params)
@@ -251,6 +260,7 @@ def completeStep(id):
 @app.get("/unCompleteStep/<int:id>")
 def unCompleteStep(id):
     with connect_db() as client:
+        # <h1><strong>UPDATES THE STEP TO BE UNCOMPLETE</strong></h1>
         sql = "UPDATE steps SET done=0 WHERE id=?"
         params = [id]
         client.execute(sql, params)
@@ -262,6 +272,7 @@ def unCompleteStep(id):
 @app.get("/completeTopic/<int:id>")
 def completeTopic(id):
     with connect_db() as client:
+        # updates the selected topic to be done
         sql = "UPDATE topics SET done=1 WHERE id=?"
         params = [id]
         client.execute(sql, params)
@@ -273,6 +284,7 @@ def completeTopic(id):
 @app.get("/unCompleteTopic/<int:id>")
 def uncompleteTopic(id):
     with connect_db() as client:
+        # updates the topic selected be to uncomplete
         sql = "UPDATE topics SET done=0 WHERE id=?"
         params = [id]
         client.execute(sql, params)
@@ -293,10 +305,12 @@ def add_a_topic():
     credits = request.form.get("credits")
     standard_number = request.form.get("standard_number")
 
+    # Sanitise the text inputs. not the non-text inputs.
     name = html.escape(name)
     description = html.escape(description)
 
     with connect_db() as client:
+        # Put all the new data into a new topic in the database
         sql = "INSERT INTO topics (name, class_id, external, internal, description, credits, standard_number) VALUES (?, ?, ?, ?, ?, ?, ?)"
         params = [name, class_id, internal, external, description, credits, standard_number]
         client.execute(sql, params)
@@ -317,7 +331,7 @@ def add_a_class():
     name = html.escape(name)
 
     with connect_db() as client:
-        # Add the thing to the DB
+        # Add the class to the DB
         sql = "INSERT INTO classes (name, size, year) VALUES (?, ?, ?)"
         params = [name, size, year]
         client.execute(sql, params)
@@ -331,6 +345,7 @@ def add_a_class():
 #-----------------------------------------------------------
 @app.post("/addStep")
 def add_a_step():
+    # get all the information from the form
     name = request.form.get("name")
     topic_id = request.form.get("topic_id")
     notes = request.form.get("notes")
@@ -338,12 +353,14 @@ def add_a_step():
     url2 = request.form.get("url2")
     url3 = request.form.get("url3")
     
+    # saniteise the test inputs
     name = html.escape(name)
     notes = html.escape(notes)
     url1 = html.escape(url1)
     url2 = html.escape(url2)
     url3 = html.escape(url3)
     with connect_db() as client:
+        # put all the new step data into the daatbase
         sql = "INSERT INTO steps (name, topic_id, notes, url1, url2, url3) VALUES (?, ?, ?, ?, ?, ?)"
         params = [name, topic_id, notes, url1, url2, url3]
         client.execute(sql, params)
@@ -357,12 +374,14 @@ def add_a_step():
 #-----------------------------------------------------------
 @app.post("/updateClass/<int:id>")
 def update_a_class(id):
+    # obtain new class data from the form
     name = request.form.get("name")
     size = request.form.get("size")
     year = request.form.get("year")
 
     name = html.escape(name)
     with connect_db() as client:
+        # put new class into the database
         sql = "UPDATE classes SET name=?, size=?, year=? WHERE id=?"
         params = [name, size, year, id]
         client.execute(sql, params)
@@ -374,6 +393,7 @@ def update_a_class(id):
 #-----------------------------------------------------------
 @app.post("/updateTopic/<int:id>")
 def update_a_topic(id):
+    # obtain new class data from the form
     name = request.form.get("name")
     class_id = request.form.get("class_id")
     external = request.form.get("external")
@@ -381,10 +401,12 @@ def update_a_topic(id):
     description = request.form.get("description")
     credits = request.form.get("credits")
     standard_number = request.form.get("standard_number")
-
+    # sanitise the text inputs
     name = html.escape(name)
     description = html.escape(description)
+
     with connect_db() as client:
+        # update topic with new information
         sql = "UPDATE classes SET name=?, class_id=?, external=?, internal=?, description=?, credits=?, standard_number=? WHERE id=?"
         params = [name, class_id, external, internal, description, credits, standard_number, id]
         client.execute(sql, params)
@@ -396,6 +418,7 @@ def update_a_topic(id):
 #-----------------------------------------------------------
 @app.post("/updateStep/<int:id>")
 def update_a_step(id):
+    # get all step new data from DB
     name = request.form.get("name")
     topic_id = request.form.get("topic_id")
     notes = request.form.get("notes")
@@ -403,7 +426,7 @@ def update_a_step(id):
     url2 = request.form.get("url2")
     url3 = request.form.get("url3")
 
-
+    # sanitise the text inputs
     name = html.escape(name)
     notes = html.escape(notes)
     url1 = html.escape(url1)
@@ -411,23 +434,21 @@ def update_a_step(id):
     url3 = html.escape(url3)
 
     with connect_db() as client:
+        # add the new step data to the step in the DB
         sql = "UPDATE classes SET topic_id=?, name=?, notes=?, url1=?, url2=?, url3=? WHERE id=?"
         params = [topic_id, name, notes, url1, url2, url3, id]
         client.execute(sql, params)
         flash("Class updated", "success")
         return redirect("/")
     
-    
-#-----------------------------------------------------------
-#
-#-----------------------------------------------------------
+
 #-----------------------------------------------------------
 # Route for deleting a class, Id given in the route
 #-----------------------------------------------------------
 @app.get("/deleteClass/<int:id>")
 def delete_a_class(id):
     with connect_db() as client:
-        # Delete the thing from the DB
+        # Delete the class from the DB
         sql = "DELETE FROM classes WHERE id=?"
         params = [id]
         client.execute(sql, params)
@@ -442,7 +463,7 @@ def delete_a_class(id):
 @app.get("/deleteTopic/<int:id>")
 def delete_a_topic(id):
     with connect_db() as client:
-        # Delete the thing from the DB
+        # Delete the Topic from the DB
         sql = "DELETE FROM topics WHERE id=?"
         params = [id]
         client.execute(sql, params)
@@ -457,7 +478,7 @@ def delete_a_topic(id):
 @app.get("/deleteStep/<int:id>")
 def delete_a_step(id):
     with connect_db() as client:
-        # Delete the thing from the DB
+        # Delete the Step from the DB
         sql = "DELETE FROM steps WHERE id=?"
         params = [id]
         client.execute(sql, params)
