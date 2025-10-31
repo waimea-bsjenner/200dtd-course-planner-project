@@ -10,9 +10,9 @@ Develop the system until it is fully featured, with a refined UI and it satisfie
 
 ## Updated Database Schema (if it changed)
 
-Replace this text with notes regarding the DB schema.
+Nothing has changed regarding the database schema
 
-![SCREENSHOT OF DB SCHEMA](screenshots/example.png)
+![SCREENSHOT OF DB SCHEMA](screenshots/dbSchemaSprint2.png)
 
 
 ---
@@ -21,87 +21,26 @@ Replace this text with notes regarding the DB schema.
 
 The web app is fully implemented with a refined UI:
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE SYSTEM HERE**
+![a screenshot of the working home page](screenshots/sprint3Functionality.png)
 
 
 ---
 
-## Testing FEATURE NAME HERE
+## Testing links of topics/steps in class/topic page
 
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
+Right now, this looks really ugly and is hard to use.
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
-
-### Changes / Improvements
-
-Replace this text with notes any improvements you made as a result of the testing.
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
-
-
----
-
-## Testing FEATURE NAME HERE
-
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
+![the links looking ugly and hard to use](screenshots/uglyLinks.png)
 
 ### Changes / Improvements
 
-Replace this text with notes any improvements you made as a result of the testing.
+It was a simple fix, I changed them all the options to buttons with role="button" in the a tag, and kept the link to the actual topic as not a button, but made it strong (bold). i also added a bit of padding between the links and aligned them vertically.
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
-
-
----
-
-## Testing FEATURE NAME HERE
-
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
-
-### Changes / Improvements
-
-Replace this text with notes any improvements you made as a result of the testing.
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
-
-
----
-
-## Testing FEATURE NAME HERE
-
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
-
-### Changes / Improvements
-
-Replace this text with notes any improvements you made as a result of the testing.
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
-
-
----
-
-## Testing FEATURE NAME HERE
-
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
-
-### Changes / Improvements
-
-Replace this text with notes any improvements you made as a result of the testing.
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
-
+![the links looking pretty and easy to use](screenshots/prettyLinks.png)
 
 ---
 
 ## Sprint Review
 
-Replace this text with a statement about how the sprint has moved the project forward - key success point, any things that didn't go so well, etc.
+This sprint moved the project forward by making the UI look nice and making increasing overall accessibility by making it easier to use. I encountered minor trouble in this sprint by not ending up with much time to work on it, but at least it works as intended.
 

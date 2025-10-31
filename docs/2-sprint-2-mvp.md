@@ -12,7 +12,7 @@ Develop a bare-bones, working web application that provides the key functionalit
 
 3 tables, classes, topics and steps, with many steps to a topic and many topics to a class.
 
-![SCREENSHOT OF DB SCHEMA](screenshots/example.png)
+![SCREENSHOT OF DB SCHEMA](screenshots/dbSchemaSprint2.png)
 
 
 ---
@@ -69,42 +69,12 @@ Having a Topic/Step with current = 1 means that it will appear under the "curren
 
 ### Changes / Improvements
 
-Works as intended for now. Will consult end user for any improvements.
-
-
----
-
-## Testing FEATURE NAME HERE
-
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
-
-### Changes / Improvements
-
-Replace this text with notes any improvements you made as a result of the testing.
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
-
-
----
-
-## Testing FEATURE NAME HERE
-
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
-
-### Changes / Improvements
-
-Replace this text with notes any improvements you made as a result of the testing.
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
+Works as intended.
 
 
 ---
 
 ## Sprint Review
 
-Replace this text with a statement about how the sprint has moved the project forward - key success point, any things that didn't go so well, etc.
+This sprint has moved the project forwards as we now have a working system which does what we intend. Most of the problems I encountered were simple errors with simple fixes, like forward slashes in routes, capitalization, and SQL query mishaps. But past all that, we are looking good.
 

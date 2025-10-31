@@ -44,4 +44,9 @@
 
 .list {
     display: flex;
+    align-items: center;
+}
+
+.list a {
+    margin: 0.3rem;
 }

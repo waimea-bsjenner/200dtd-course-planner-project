@@ -22,7 +22,7 @@
         <h3>Information</h3>
         <p>External: {% if topic.external == 1 %} yes {% else %} no {% endif %}</p>
         <p>Internal: {% if topic.internal == 1 %} yes {% else %} no {% endif %}</p>
-        <p>Credits: {% if topic.credits > 1 %} {{ topic.credits }} {% else %} none {% endif %}</p>
+        <p>Credits: {% if topic.credits > 0 %} {{ topic.credits }} {% else %} none {% endif %}</p>
         <p>Standard number: {% if topic.standard_number != 0 %} {{ topic.standard_number }} {% else %} NA/doesn't exist {%endif%}</p>
         <p>Current: {% if topic.current == 1 %} yes {% else %} no {% endif %}</p>
         <p>Done: {% if topic.done == 1 %} yes {% else %} no {% endif %}</p>
@@ -38,10 +38,11 @@
                 {% if step.current == 1 %}
                     <li class="list">
                         <a href="/step/{{ step.id }}">
-                            {{ step.name }}
+                            <strong>{{ step.name }}</strong>
                         </a>
-                        <a href="/unCurrentStep/{{ step.id }}">Remove step as current?</a>
-                        <a href="/completeStep/{{ step.id }}">Complete step</a>
+                        <a role=button href="/unCurrentStep/{{ step.id }}">Remove step as current?</a>
+                        <a role=button href="/completeStep/{{ step.id }}">Complete step</a>
+                        <a role=button onclick="return confirm('Really delete?');" href="/deleteTopic/{{ topic.id }}">Delete?</a>
                     </li>
                 {% endif %}    
 
@@ -57,10 +58,11 @@
                 {% if step.done == 0 and step.current == 0 %}
                     <li class="list">
                         <a href="/step/{{ step.id }}">
-                            {{ step.name }}
+                            <strong>{{ step.name }}</strong>
                         </a>
-                        <a href="/currentStep/{{ step.id }}">Make step current?</a>
-                        <a href="/completeStep/{{ step.id }}">Complete Step</a>
+                        <a role=button href="/currentStep/{{ step.id }}">Make step current?</a>
+                        <a role=button href="/completeStep/{{ step.id }}">Complete Step</a>
+                        <a role=button onclick="return confirm('Really delete?');" href="/deleteStep/{{ step.id }}">Delete?</a>
                     </li>
                 {% endif %}    
 
@@ -76,10 +78,10 @@
                 {% if step.done == 1 %}
                     <li class="list">
                         <a href="/step/{{ step.id }}">
-                            {{ step.name }}
+                            <strong>{{ step.name }}</strong>
                         </a>
-                        <a onclick="return confirm('Really delete?');" href="/deleteStep/{{ step.id }}">Delete Step</a>
-                        <a href="/unCompleteStep/{{ step.id }}">Uncomplete Step</a>
+                        <a role=button href="/unCompleteStep/{{ step.id }}">Uncomplete Step</a>
+                        <a role=button onclick="return confirm('Really delete?');" href="/deleteStep/{{ step.id }}">Delete Step</a>
                     </li>
                 {% endif %}
 

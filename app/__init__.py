@@ -58,12 +58,12 @@ def index():
 @app.get("/class/<int:id>")
 def show_class(id):
     with connect_db() as client:
-        # Get all the things from the DB
+        # Get all topics of the class from the DB
         sql = "SELECT * FROM topics where class_id=? ORDER BY done ASC"
         params = [id]
         result = client.execute(sql, params)
         topics = result.rows
-
+        # Get the class from the DB
         sql2 = "SELECT * FROM classes where id=?"
         result2 = client.execute(sql2,params)
         clas = result2.rows[0]
@@ -96,7 +96,7 @@ def show_topic(id):
 @app.get("/step/<int:id>")
 def show_step(id):
     with connect_db() as client:
-        # Get the thing details from the DB
+        # Get the step details from the DB
         sql = "SELECT * FROM steps WHERE id=?"
         params = [id]
         result = client.execute(sql, params)
@@ -125,7 +125,7 @@ def newClassForm():
 @app.get("/newTopicForm")
 def newTopicForm():
     with connect_db() as client:
-        # Get all classes from DB
+        # Get all classes from DB so we can choose the parent class of a topic
         sql = "SELECT * from classes"
         params=[]
         result = client.execute(sql, params)
@@ -138,7 +138,7 @@ def newTopicForm():
 @app.get("/newStepForm")
 def newStepForm():
     with connect_db() as client:
-        # get all topics from DB
+        # get all topics from DB so we can choose the parent topic of a step
         sql = "SELECT * from topics"
         params=[]
         result = client.execute(sql,params)
@@ -165,7 +165,7 @@ def updateClassForm(id):
 @app.get("/updateTopicForm/<int:id>")
 def updateTopicForm(id):
     with connect_db() as client:
-        # Get Topic being updated and all classes being updated from DB
+        # Get Topic being updated and all classes so we can choose parent class from DB
         sql = "SELECT * from topics where id=?"
         params = [id]
         result = client.execute(sql, params)
@@ -182,7 +182,7 @@ def updateTopicForm(id):
 @app.get("/updateStepForm/<int:id>")
 def updateStepForm(id):
     with connect_db() as client:
-        # Get Step being updated and all topics from DB
+        # Get Step being updated and all topics so we can choose parent topic from DB
         sql = "SELECT * from steps where id=?"
         params = [id]
         result = client.execute(sql, params)
@@ -224,7 +224,7 @@ def uncurrentTopic(id):
 @app.get("/currentStep/<int:id>")
 def currentStep(id):
     with connect_db() as client:
-        # uPDATES THE STEP SELECTED TO BE CURRENT OOP CAPS LOCK
+        # uPDATES THE STEP SELECTED TO BE CURRENT
         sql = "UPDATE steps SET current=1 WHERE id=?"
         params = [id]
         client.execute(sql, params)
@@ -236,7 +236,7 @@ def currentStep(id):
 @app.get("/unCurrentStep/<int:id>")
 def uncurrentStep(id):
     with connect_db() as client:
-        # updates the sTEp secelted to be not current
+        # updates the sTEp selected to be not current
         sql = "UPDATE steps SET current=0 WHERE id=?"
         params = [id]
         client.execute(sql, params)
@@ -260,7 +260,7 @@ def completeStep(id):
 @app.get("/unCompleteStep/<int:id>")
 def unCompleteStep(id):
     with connect_db() as client:
-        # <h1><strong>UPDATES THE STEP TO BE UNCOMPLETE</strong></h1>
+        # updates the step to be incomplete
         sql = "UPDATE steps SET done=0 WHERE id=?"
         params = [id]
         client.execute(sql, params)
@@ -305,7 +305,7 @@ def add_a_topic():
     credits = request.form.get("credits")
     standard_number = request.form.get("standard_number")
 
-    # Sanitise the text inputs. not the non-text inputs.
+    # Sanitise the text inputs
     name = html.escape(name)
     description = html.escape(description)
 
@@ -353,7 +353,7 @@ def add_a_step():
     url2 = request.form.get("url2")
     url3 = request.form.get("url3")
     
-    # saniteise the test inputs
+    # sanitise the test inputs
     name = html.escape(name)
     notes = html.escape(notes)
     url1 = html.escape(url1)
@@ -407,10 +407,10 @@ def update_a_topic(id):
 
     with connect_db() as client:
         # update topic with new information
-        sql = "UPDATE classes SET name=?, class_id=?, external=?, internal=?, description=?, credits=?, standard_number=? WHERE id=?"
+        sql = "UPDATE topics SET name=?, class_id=?, external=?, internal=?, description=?, credits=?, standard_number=? WHERE id=?"
         params = [name, class_id, external, internal, description, credits, standard_number, id]
         client.execute(sql, params)
-        flash("Class updated", "success")
+        flash("Topic updated", "success")
         return redirect("/")    
 
 #-----------------------------------------------------------
@@ -435,10 +435,10 @@ def update_a_step(id):
 
     with connect_db() as client:
         # add the new step data to the step in the DB
-        sql = "UPDATE classes SET topic_id=?, name=?, notes=?, url1=?, url2=?, url3=? WHERE id=?"
+        sql = "UPDATE steps SET topic_id=?, name=?, notes=?, url1=?, url2=?, url3=? WHERE id=?"
         params = [topic_id, name, notes, url1, url2, url3, id]
         client.execute(sql, params)
-        flash("Class updated", "success")
+        flash("Step updated", "success")
         return redirect("/")
     
 

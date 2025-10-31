@@ -17,14 +17,14 @@
 
 {% block content %}
 
-    <h1>{{ step.name }}</h1>
+    <h1><a href="/topic/{{ step.topic_id }}">Topic</a> -> {{ step.name }}</h1>
 
 
     <article>
-      <p>{{ step.notes }}</p>
-      <a href="{{ step.url1 }}">{{ step.url1 }}</a>
-      <a href="{{ step.url2 }}">{{ step.url2 }}</a>
-      <a href="{{ step.url3 }}">{{ step.url3 }}</a>
+      <p>Step notes: {{ step.notes }}</p>
+      <p>Link 1: <a href="{{ step.url1 }}">{{ step.url1 }}</a></p>
+      <p>Link 2: <a href="{{ step.url2 }}">{{ step.url2 }}</a></p>
+      <p>Link 3: <a href="{{ step.url3 }}">{{ step.url3 }}</a></p>
     </article>
 
     <article>

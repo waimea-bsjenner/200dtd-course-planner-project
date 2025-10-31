@@ -31,16 +31,16 @@
                 {% if topic.current == 1 %}
                     <li class="list">
                         <a href="/topic/{{ topic.id }}">
-                            {{ topic.name }}
+                            <strong>{{ topic.name }}</strong>
                         </a>
                     
-                        <a onclick="return confirm('Really delete?');" href="/deleteTopic/{{ topic.id }}">Delete?</a>
-                        <a href="/uncurrentTopic/{{ topic.id }}">Remove topic as current</a>
-                        <a href="/completeTopic/{{ topic.id }}">Complete Topic</a>
+                        <a role=button onclick="return confirm('Really delete?');" href="/deleteTopic/{{ topic.id }}">Delete?</a>
+                        <a role=button href="/uncurrentTopic/{{ topic.id }}">Remove topic as current</a>
+                        <a role=button href="/completeTopic/{{ topic.id }}">Complete Topic</a>
                     </li>
                 {% endif %}
-                {% else %}
-                    <p>None!</p>
+            {% else %}
+                <p>None!</p>
             {% endfor %}
             
             <h3>Incomplete Topics:</h3>
@@ -48,27 +48,29 @@
                 {% if topic.done == 0 and topic.current == 0 %}
                     <li class="list">
                         <a href="/topic/{{ topic.id }}">
-                            {{ topic.name }}
+                            <strong>{{ topic.name }}</strong>
                         </a>
 
-                        <a onclick="return confirm('Really delete?');" href="/deleteTopic/{{ topic.id }}">Delete?</a>
-                        <a href="/currentTopic/{{ topic.id }}">make topic current</a>
-                        <a href="/completeTopic/{{ topic.id }}">Complete Topic</a>
+                        <a role=button href="/currentTopic/{{ topic.id }}">make topic current</a>
+                        <a role=button href="/completeTopic/{{ topic.id }}">Complete Topic</a>
+                        <a role=button onclick="return confirm('Really delete?');" href="/deleteTopic/{{ topic.id }}">Delete?</a>
                     </li>
                 {% endif %}
+            {% else %}
+                <p>None!</p>
             {% endfor %}           
         </ul>
 
         <ul>
-            <h3>Completed Topics:</h3>
+            <strong>Completed Topics:</strong>
             {% for topic in topics %}
                 {% if topic.done == 1 %}
                     <li class="list">
                         <a href="/topic/{{ topic.id }}">
-                            {{ topic.name }}
+                            <strong>{{ topic.name }}</strong>
                         </a>
-                        <a href="/unCompleteTopic/{{ topic.id }}">Uncomplete topic</a>
-                        <a onclick="return confirm('Really delete?');" href="/deleteTopic/{{ topic.id }}">Delete?</a>
+                        <a role=button href="/unCompleteTopic/{{ topic.id }}">Uncomplete topic</a>
+                        <a role=button onclick="return confirm('Really delete?');" href="/deleteTopic/{{ topic.id }}">Delete?</a>
                     </li>
                 {% endif %}
 

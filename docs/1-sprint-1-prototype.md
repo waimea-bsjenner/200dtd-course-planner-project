@@ -14,8 +14,6 @@ Develop a prototype that simulates the key functionality of the system, then tes
 
 database will have 3 tables, one for classes, one for topics with the class as a separate key, and one for assignments with the topic and class as separate keys
 
-![SCREENSHOT OF DB DESIGN](screenshots/example.png)
-
 
 ---
 
@@ -29,7 +27,7 @@ This Figma demo shows the initial design for the UI 'flow':
 
 ### Testing
 
-steveCopley.feedback()
+My end user gave me this feedback
 
 > Generalise to be steps rather than assignments
 
@@ -59,26 +57,6 @@ to do this I added a current column to topics and steps in drawsql, and added it
 ![Screenshot of DrawSQL plan now with "current" column](screenshots/drawsqlCurrent.png)
 
 <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/GGcGF0vmZpXDY5VRG9OAQv/Course-Planner?node-id=0-1&embed-host=share" allowfullscreen></iframe>
----
-
-## Initial UI Prototype
-
-The next stage of prototyping was to develop the layout for each screen of the UI.
-
-This Figma demo shows the initial layout design for the UI:
-
-*FIGMA PROTOTYPE - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT*
-
-### Testing
-
-Replace this text with notes about what you did to test the UI flow and the outcome of the testing.
-
-### Changes / Improvements
-
-Replace this text with notes any improvements you made as a result of the testing.
-
-*FIGMA IMPROVED PROTOTYPE - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT*
-
 
 ---
 
@@ -88,22 +66,11 @@ Having established the layout of the UI screens, the prototype was refined visua
 
 This Figma demo shows the UI with refinements applied:
 
-*FIGMA REFINED PROTOTYPE - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT*
-
-### Testing
-
-Replace this text with notes about what you did to test the UI flow and the outcome of the testing.
-
-### Changes / Improvements
-
-Replace this text with notes any improvements you made as a result of the testing.
-
-*FIGMA IMPROVED REFINED PROTOTYPE - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT*
-
+https://www.figma.com/design/GGcGF0vmZpXDY5VRG9OAQv/Course-Planner?node-id=0-1&t=1cBkf64hWoRsUBji-1
 
 ---
 
 ## Sprint Review
 
-Replace this text with a statement about how the sprint has moved the project forward - key success point, any things that didn't go so well, etc.
+This sprint has moved the project forward by giving me a blueprint that I can refer to in development of the project.
 
